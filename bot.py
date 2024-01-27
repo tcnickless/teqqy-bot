@@ -8,6 +8,7 @@ intents.message_content = True
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
+print('TOKEN = {TOKEN}')
 
 client = discord.Client(intents=intents)
 
