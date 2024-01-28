@@ -17,9 +17,7 @@ client = discord.Client(intents=intents)
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
 
-    for guild in client.guilds:
-        if guild.name == GUILD:
-            break
+    guild = discord.utils.find(lambda g: g.name == GUILD, client.guilds)
 
     print(
         f'{client.user} is connected to the following guild:\n'
