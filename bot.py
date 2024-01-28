@@ -22,7 +22,7 @@ async def on_ready():
 
     print(
         f'{client.user} is connected to the following guild:\n'
-        f'{guild.name}(id: {guild.id})'
+        f'{guild.name} (id: {guild.id})'
     )
 
 client.run(TOKEN)
