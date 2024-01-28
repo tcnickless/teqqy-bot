@@ -53,5 +53,13 @@ async def on_message(message):
         await message.channel.send(response)
     elif message.content == 'raise-exception':
         raise discord.DiscordException
+    
+@client.event
+async def on_error(event, *args, **kwargs):
+    with open('err.log', 'a') as f:
+        if event == 'on_mesage':
+            f.write(f'Unhandled message: {args[0]}\n')
+        else:
+            raise
 
 client.run(TOKEN)
