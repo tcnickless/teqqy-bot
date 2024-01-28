@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
