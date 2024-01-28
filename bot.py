@@ -48,7 +48,7 @@ async def on_message(message):
     ]
 
     if message.content == '99!':
-        response = random(brooklyn_99_quotes)
+        response = random.choice(brooklyn_99_quotes)
         await message.channel.send(response)
 
 client.run(TOKEN)
