@@ -51,5 +51,7 @@ async def on_message(message):
     if message.content == '99!':
         response = random.choice(brooklyn_99_quotes)
         await message.channel.send(response)
+    elif message.content == 'raise-exception':
+        raise discord.DiscordException
 
 client.run(TOKEN)
