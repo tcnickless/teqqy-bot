@@ -35,7 +35,7 @@ async def on_member_join(member):
         f'Hi {member.name}, welcome to my Discord server!'
     )
 
-@bot.command(name='99')
+@bot.command(name='99', help='Responds with a random quote from Brooklyn 9-9.')
 async def nine_nine(ctx):   
     brooklyn_99_quotes = [
         'I\'m the human form of the 💯 emoji.',
