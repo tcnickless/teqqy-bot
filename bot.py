@@ -36,10 +36,7 @@ async def on_member_join(member):
     )
 
 @bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
-    
+async def nine_nine(ctx):   
     brooklyn_99_quotes = [
         'I\'m the human form of the 💯 emoji.',
         'Bingpot!',
@@ -49,11 +46,8 @@ async def on_message(message):
         ),
     ]
 
-    if message.content == '99!':
-        response = random.choice(brooklyn_99_quotes)
-        await message.channel.send(response)
-    elif message.content == 'raise-exception':
-        raise discord.DiscordException
+    response = random.choice(brooklyn_99_quotes)
+    await ctx.send(response)
     
 @bot.event
 async def on_error(event, *args, **kwargs):
