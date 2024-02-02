@@ -14,6 +14,7 @@ intents.message_content = True
 intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+# CLI Messaging
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
@@ -28,6 +29,9 @@ async def on_ready():
     members = '\n - '.join([member.name for member in guild.members])
     print(f'Guild Members:\n - {members}')
 
+
+
+# Discord Channel Messaging
 @bot.event
 async def on_member_join(member):
     await member.create_dm()
@@ -57,14 +61,6 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     ]
     await ctx.send(','.join(dice))
 
-@bot.event
-async def on_error(event, *args, **kwargs):
-    with open('err.log', 'a') as f:
-        if event == 'on_message':
-            f.write(f'Unhandled message: {args[0]}\n')
-        else:
-            raise
-
 @bot.command(name='create-channel')
 @commands.has_role('admin')
 async def create_channel(ctx, channel_name='python'):
@@ -73,5 +69,20 @@ async def create_channel(ctx, channel_name='python'):
     if not existing_channel:
         print(f'Creating a new channel: {channel_name}')
         await guild.create_text_channel(channel_name)
+
+
+
+# error handling
+@bot.event
+async def on_error(event, *args, **kwargs):
+    with open('err.log', 'a') as f:
+        if event == 'on_message':
+            f.write(f'Unhandled message: {args[0]}\n')
+        else:
+            raise
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.errors.CheckFailure):
+        await ctx.send('You do not have the correct role for this command.')
 
 bot.run(TOKEN)
