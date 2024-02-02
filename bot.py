@@ -31,7 +31,7 @@ async def on_ready():
 
 
 
-# Discord Channel Messaging
+# Discord Channel Responses
 @bot.event
 async def on_member_join(member):
     await member.create_dm()
@@ -44,6 +44,20 @@ async def nine_nine(ctx):
     brooklyn_99_quotes = [
         'I\'m the human form of the 💯 emoji.',
         'Bingpot!',
+        'Love, it sustains you. It’s like oatmeal.',
+        'I’m fine at parties, I just stand in the middle of the room and don’t say anything.',
+        'I am way too sleep-deprived to deal with your negativity right now.',
+        'I’m gonna go cry in the bathroom, peace out homies',
+        'I asked them if they wanted to embarrass you, and they instantly said yes.',
+        'OK, no hard feelings, but I hate you. Not joking. Bye.',
+        'Sarge, with all due respect, I am gonna completely ignore everything you just said.',
+        'The English language can not fully capture the depth and complexity of my thoughts, so I’m incorporating emojis into my speech to better express myself. Winky face.',
+        'If I die, turn my tweets into a book.',
+        'Great, I’d like your $8-est bottle of wine, please.',
+        'Captain Wuntch. Good to see you. But if you’re here, who’s guarding Hades?',
+        'I’m playing Kwazy Cupcakes, I’m hydrated as hell, and I’m listening to Sheryl Crow. I’ve got my own party going on.',
+        'Captain, turn your greatest weakness into your greatest strength. Like Paris Hilton RE: her sex tape.',
+        'Jake, piece of advice: just give up. It’s the Boyle way. It’s why our family crest is a white flag.',
         (
             'Cool. Cool cool cool cool cool cool cool, '
             'no doubt no doubt no doubt no doubt.'
@@ -61,6 +75,8 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     ]
     await ctx.send(','.join(dice))
 
+
+# Role Restricted Actions
 @bot.command(name='create-channel')
 @commands.has_role('admin')
 async def create_channel(ctx, channel_name='python'):
