@@ -69,7 +69,7 @@ async def on_error(event, *args, **kwargs):
 @commands.has_role('admin')
 async def create_channel(ctx, channel_name='python'):
     guild = ctx.guild
-    existing_channel = discord.utils.get(guild_channels, name=channel_name)
+    existing_channel = discord.utils.get(guild.channels, name=channel_name)
     if not existing_channel:
         print(f'Creating a new channel: {channel_name}')
         await guild.create_text_channel(channel_name)
