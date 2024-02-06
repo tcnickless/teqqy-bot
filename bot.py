@@ -15,7 +15,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)
-WowHeadFeed = feedparser.parse(https://www.wowhead.com/news&rss)
+WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
 entry = WowHeadFeed.entries[1]
 print(entry.keys())
 
