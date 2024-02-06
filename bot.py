@@ -6,6 +6,7 @@ import feedparser
 
 from dotenv import load_dotenv
 from discord.ext import commands
+from discord.ext import tasks
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
