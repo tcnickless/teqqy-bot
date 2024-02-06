@@ -49,7 +49,7 @@ async def on_member_join(member):
 @bot.command(name='getLatest', help='Shows latest article from Wowhead RSS Feed.')
 async def get_latest_article(ctx):
     WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
-    response = WowHeadFeed[0].link
+    response = WowHeadFeed.entries[0].link
     await ctx.send(response)
 
 
