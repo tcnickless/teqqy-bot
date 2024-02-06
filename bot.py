@@ -125,5 +125,5 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.errors.CheckFailure):
         await ctx.send('You do not have the correct role for this command.')
 
-RssUpdate.start()
+#RssUpdate.start()
 bot.run(TOKEN)
