@@ -5,8 +5,7 @@ import discord
 import feedparser
 
 from dotenv import load_dotenv
-from discord.ext import commands
-from discord.ext import tasks
+from discord.ext import commands, tasks
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -16,6 +15,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)
+
 WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
 previousEntry = WowHeadFeed.entries[0]
 
@@ -24,7 +24,7 @@ async def RssUpdate():
     WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
     if(WowHeadFeed.entries[0].id == previousEntry.id):
         response = WowHeadFeed.entries[0].link
-        print(f'Link: ', WowHeadFeed.entries[0].link)
+        await print(f'Link: ', WowHeadFeed.entries[0].link)
         previousEntry = WowHeadFeed.entries[0]
 
 
