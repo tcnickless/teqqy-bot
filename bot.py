@@ -35,7 +35,7 @@ async def on_ready():
 
     print(f'Number of RSS Posts at Wowhead: ', len(WowHeadFeed.entries))
     entry = WowHeadFeed.entries[0]
-    print(f'Post Title: ', entry.title)
+    print(f'Post Title: ', entry.id)
 
 
 
