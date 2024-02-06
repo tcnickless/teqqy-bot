@@ -16,7 +16,7 @@ intents.message_content = True
 intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
-entry = WowHeadFeed.entries[1]
+
 
 # CLI Messaging
 @bot.event
@@ -34,6 +34,8 @@ async def on_ready():
     print(f'Guild Members:\n\n - {members}')
 
     print(f'Number of RSS Posts at Wowhead: ', len(WowHeadFeed.entries))
+    entry = WowHeadFeed.entries[1]
+    print(f'Post Title: ', entry.title)
 
 
 
