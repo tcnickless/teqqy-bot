@@ -19,7 +19,7 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
 previousEntry = WowHeadFeed.entries[0]
 
-@tasks.loop(seconds=60)
+@tasks.loop(seconds=60.0)
 async def RssUpdate():
     WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
     if(WowHeadFeed.entries[0].id == previousEntry.id):
