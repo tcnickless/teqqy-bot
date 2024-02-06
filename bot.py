@@ -33,9 +33,8 @@ async def on_ready():
     members = '\n - '.join([member.name for member in guild.members])
     print(f'Guild Members:\n\n - {members}')
 
-    print(f'Number of RSS Posts at Wowhead: ', len(WowHeadFeed.entries))
-    entry = WowHeadFeed.entries[0]
-    print(f'Post Title: ', entry.id)
+    previousEntry = WowHeadFeed.entries[0]
+    print(f'Displaying Posts uploaded after: ', previousEntry.id)
 
 
 
@@ -46,6 +45,13 @@ async def on_member_join(member):
     await member.dm_channel.send(
         f'Hi {member.name}, welcome to my Discord server!'
     )
+
+@bot.command(name='getLatest', help='Shows latest article from Wowhead RSS Feed.')
+async def get_latest_article(ctx):
+    WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
+    response = WowHeadFeed[0].link
+    await ctx.send(response)
+
 
 @bot.command(name='99', help='Responds with a random quote from Brooklyn 9-9.')
 async def nine_nine(ctx):   
