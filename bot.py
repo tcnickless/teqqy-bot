@@ -16,6 +16,8 @@ intents.message_content = True
 intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
+
 @tasks.loop(seconds=5.0)
 async def RssUpdate():
     PREVIOUS_ENTRY = os.getenv('LAST_POST')
