@@ -16,14 +16,12 @@ intents.message_content = True
 intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
-previousEntry = WowHeadFeed.entries[0]
-
 @tasks.loop(seconds=5.0)
 def RssUpdate():
+    PREVIOUS_ENTRY = os.getenv('LAST_POST')
     WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
     print(f'DEBUG1: ', WowHeadFeed.entries[0].id)
-    print(f'DEBUG2: ', previousEntry.id)
+    print(f'DEBUG2: ', PREVIOUS_ENTRY)
     if(WowHeadFeed.entries[0].id == previousEntry.id):
         print('No updates')
     else:
