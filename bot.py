@@ -126,4 +126,4 @@ async def on_command_error(ctx, error):
         await ctx.send('You do not have the correct role for this command.')
 
 RssUpdate.start()
-bot.run(TOKEN)
+#bot.run(TOKEN)
