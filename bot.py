@@ -29,7 +29,8 @@ async def RssUpdate():
         print('No updates')
     else:
         WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
-        set_key(load_dotenv(), 'LAST_POST', WowHeadFeed.entries[0].id)
+        dotenv_file = dotenv.find_dotenv()
+        set_key(dotenv_file, 'LAST_POST', WowHeadFeed.entries[0].id)
 
 
 # CLI Messaging
