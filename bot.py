@@ -19,13 +19,12 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
 previousEntry = WowHeadFeed.entries[0]
 
-@tasks.loop(seconds=60.0)
+@tasks.loop(seconds=5.0)
 async def RssUpdate():
     WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
-    if(WowHeadFeed.entries[0].id == previousEntry.id):
-        response = WowHeadFeed.entries[0].link
-        print(f'Link: ', WowHeadFeed.entries[0].link)
-        previousEntry = WowHeadFeed.entries[0]
+    response = WowHeadFeed.entries[0].link
+    print(f'Link: ', WowHeadFeed.entries[0].link)
+    previousEntry = WowHeadFeed.entries[0]
 
 
 # CLI Messaging
@@ -125,5 +124,5 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.errors.CheckFailure):
         await ctx.send('You do not have the correct role for this command.')
 
-#RssUpdate.start()
+RssUpdate.start()
 bot.run(TOKEN)
