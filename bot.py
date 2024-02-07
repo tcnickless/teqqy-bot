@@ -29,6 +29,7 @@ async def RssUpdate():
     if(WowHeadFeed.entries[0].id == PREVIOUS_ENTRY):
         print('No updates')
     else:
+        print('NO MATCH')
         WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
         dotenv_file = dotenv.find_dotenv()
         set_key(dotenv_file, 'LAST_POST', WowHeadFeed.entries[0].id)
