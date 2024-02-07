@@ -24,7 +24,9 @@ async def RssUpdate():
     WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
     print(f'DEBUG: ', WowHeadFeed.entries[0].id)
     print(f'DEBUG: ', previousEntry.id)
-    if(WowHeadFeed.entries[0].id != previousEntry.id):
+    if(WowHeadFeed.entries[0].id == previousEntry.id):
+        print('No updates')
+    else:
         response = WowHeadFeed.entries[0].link
         print(f'Link: ', WowHeadFeed.entries[0].link)
         previousEntry = WowHeadFeed.entries[0]
