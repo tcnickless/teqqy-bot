@@ -22,11 +22,12 @@ previousEntry = WowHeadFeed.entries[0]
 @tasks.loop(seconds=5.0)
 async def RssUpdate():
     WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
-    print(f'TEST PRINT: ', previousEntry)
+    print(f'DEBUG: ', WowHeadFeed.entries[0].id)
+    print(f'DEBUG: ', previousEntry.id)
     #if(WowHeadFeed.entries[0].id != previousEntry.id):
         #response = WowHeadFeed.entries[0].link
         #print(f'Link: ', WowHeadFeed.entries[0].link)
-       # previousEntry = WowHeadFeed.entries[0]
+        #previousEntry = WowHeadFeed.entries[0]
 
 
 # CLI Messaging
