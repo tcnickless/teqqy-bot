@@ -3,9 +3,9 @@ import os
 import random
 import discord
 import feedparser
-import dotenv
 
 from dotenv import load_dotenv
+from dotenv import set_key
 from discord.ext import commands, tasks
 
 load_dotenv()
@@ -29,8 +29,7 @@ async def RssUpdate():
         print('No updates')
     else:
         WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
-        print(f'New Link: ', WowHeadFeed.entries[0].link)
-        dotenv.set_key(dotenv.load_dotenv(), 'LAST_POST', WowHeadFeed.entries[0].id)
+        set_key(load_dotenv(), 'LAST_POST', WowHeadFeed.entries[0].id)
 
 
 # CLI Messaging
