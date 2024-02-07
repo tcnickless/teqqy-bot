@@ -30,6 +30,7 @@ async def RssUpdate():
         WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
         dotenv_file = dotenv.find_dotenv()
         set_key(dotenv_file, 'LAST_POST', WowHeadFeed.entries[0].id)
+        print(f'New Link: ', os.getenv('LAST_POST'))
 
 
 # CLI Messaging
