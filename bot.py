@@ -45,7 +45,7 @@ async def on_ready():
     previousEntry = WowHeadFeed.entries[0]
     print(f'Displaying Posts uploaded after: ', previousEntry.id)
 
-
+    RssUpdate.start()
 
 # Discord Channel Responses
 @bot.event
@@ -124,5 +124,5 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.errors.CheckFailure):
         await ctx.send('You do not have the correct role for this command.')
 
-RssUpdate.start()
+
 bot.run(TOKEN)
