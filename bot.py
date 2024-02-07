@@ -2,6 +2,7 @@
 import os
 import random
 import discord
+import dotenv
 import feedparser
 
 from dotenv import load_dotenv
