@@ -3,8 +3,9 @@ import os
 import random
 import discord
 import feedparser
+import dotenv
 
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from discord.ext import commands, tasks
 
 load_dotenv()
