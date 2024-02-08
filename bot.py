@@ -31,6 +31,7 @@ async def RssUpdate():
         dotenv_file = dotenv.find_dotenv()
         id_string = WowHeadFeed.entries[0].id
         set_key(dotenv_file, 'LAST_POST', id_string)
+        load_dotenv(override=True)
         print(f'New Link: ', os.getenv('LAST_POST'))
 
 
