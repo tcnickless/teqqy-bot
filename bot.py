@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from dotenv import set_key
 from discord.ext import commands, tasks
 
-load_dotenv()
+load_dotenv(override=True)
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
@@ -29,7 +29,8 @@ async def RssUpdate():
         print('FILE UPDATED')
         WowHeadFeed = feedparser.parse("https://www.wowhead.com/news&rss")
         dotenv_file = dotenv.find_dotenv()
-        set_key(dotenv_file, 'LAST_POST', WowHeadFeed.entries[0].id)
+        id_string = WowHeadFeed.entries[0].id
+        set_key(dotenv_file, 'LAST_POST', id_string)
         print(f'New Link: ', os.getenv('LAST_POST'))
 
 
